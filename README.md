@@ -1,5 +1,6 @@
 # Tourist - Image Analysis Tool
 
+  <img src="/img/touristimage1.png" width="600" height="550"></img>
 
   - JPG, JPEG (now)
   - Visualization
@@ -8,6 +9,7 @@
 ### Dev
    - 박건 (Chris Park)
    - 오민수 (Minsoo O)
+   
 
 ### Team
 
@@ -15,7 +17,7 @@
   
 ### Support
 
-[![](https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-1/p200x200/1975256_467920220003343_157359973_n.png?oh=4a56e608bd84667fbe16da14801edd33&oe=59816471E)](https://www.facebook.com/naverd2)
+[![](https://naver.github.io/assets/images/naverd2.png)](https://www.facebook.com/naverd2)
 
 
 
