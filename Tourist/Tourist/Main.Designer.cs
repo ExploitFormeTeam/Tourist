@@ -48,17 +48,27 @@
             this.tabMap = new System.Windows.Forms.TabPage();
             this.TouristGmap = new GMap.NET.WindowsForms.GMapControl();
             this.tabDetail = new System.Windows.Forms.TabPage();
-            this.imageViewer = new System.Windows.Forms.PictureBox();
+            this.grp_gps = new System.Windows.Forms.GroupBox();
+            this.lbgps_location_title = new System.Windows.Forms.Label();
+            this.lbgps_long_title = new System.Windows.Forms.Label();
+            this.lbgps_lat_title = new System.Windows.Forms.Label();
+            this.grp_ImageViewer = new System.Windows.Forms.GroupBox();
             this.tabSetting = new System.Windows.Forms.TabPage();
             this.detailViewLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.grp_ImageViewer = new System.Windows.Forms.GroupBox();
+            this.grp_alert = new System.Windows.Forms.GroupBox();
+            this.lb_alert = new System.Windows.Forms.Label();
+            this.imageViewer = new System.Windows.Forms.PictureBox();
+            this.ImageAlertViewer = new System.Windows.Forms.PictureBox();
             this.TouristMenu.SuspendLayout();
             this.TouristTabControl.SuspendLayout();
             this.tabMap.SuspendLayout();
             this.tabDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageViewer)).BeginInit();
+            this.grp_gps.SuspendLayout();
             this.grp_ImageViewer.SuspendLayout();
+            this.grp_alert.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageViewer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageAlertViewer)).BeginInit();
             this.SuspendLayout();
             // 
             // detailView
@@ -177,6 +187,7 @@
             this.TouristTabControl.SelectedIndex = 0;
             this.TouristTabControl.Size = new System.Drawing.Size(751, 348);
             this.TouristTabControl.TabIndex = 4;
+            this.TouristTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TouristTabControl_Selected);
             // 
             // tabMap
             // 
@@ -216,7 +227,9 @@
             // 
             // tabDetail
             // 
+            this.tabDetail.Controls.Add(this.grp_gps);
             this.tabDetail.Controls.Add(this.grp_ImageViewer);
+            this.tabDetail.Controls.Add(this.grp_alert);
             this.tabDetail.Location = new System.Drawing.Point(4, 24);
             this.tabDetail.Name = "tabDetail";
             this.tabDetail.Padding = new System.Windows.Forms.Padding(3);
@@ -225,13 +238,54 @@
             this.tabDetail.Text = "FileDetail";
             this.tabDetail.UseVisualStyleBackColor = true;
             // 
-            // imageViewer
+            // grp_gps
             // 
-            this.imageViewer.Location = new System.Drawing.Point(15, 22);
-            this.imageViewer.Name = "imageViewer";
-            this.imageViewer.Size = new System.Drawing.Size(235, 257);
-            this.imageViewer.TabIndex = 0;
-            this.imageViewer.TabStop = false;
+            this.grp_gps.Controls.Add(this.lbgps_location_title);
+            this.grp_gps.Controls.Add(this.lbgps_long_title);
+            this.grp_gps.Controls.Add(this.lbgps_lat_title);
+            this.grp_gps.Location = new System.Drawing.Point(288, 12);
+            this.grp_gps.Name = "grp_gps";
+            this.grp_gps.Size = new System.Drawing.Size(241, 100);
+            this.grp_gps.TabIndex = 2;
+            this.grp_gps.TabStop = false;
+            this.grp_gps.Text = "위치정보";
+            // 
+            // lbgps_location_title
+            // 
+            this.lbgps_location_title.AutoSize = true;
+            this.lbgps_location_title.Location = new System.Drawing.Point(17, 69);
+            this.lbgps_location_title.Name = "lbgps_location_title";
+            this.lbgps_location_title.Size = new System.Drawing.Size(66, 15);
+            this.lbgps_location_title.TabIndex = 5;
+            this.lbgps_location_title.Text = "상세위치 : ";
+            // 
+            // lbgps_long_title
+            // 
+            this.lbgps_long_title.AutoSize = true;
+            this.lbgps_long_title.Location = new System.Drawing.Point(17, 22);
+            this.lbgps_long_title.Name = "lbgps_long_title";
+            this.lbgps_long_title.Size = new System.Drawing.Size(42, 15);
+            this.lbgps_long_title.TabIndex = 3;
+            this.lbgps_long_title.Text = "경도 : ";
+            // 
+            // lbgps_lat_title
+            // 
+            this.lbgps_lat_title.AutoSize = true;
+            this.lbgps_lat_title.Location = new System.Drawing.Point(17, 45);
+            this.lbgps_lat_title.Name = "lbgps_lat_title";
+            this.lbgps_lat_title.Size = new System.Drawing.Size(42, 15);
+            this.lbgps_lat_title.TabIndex = 4;
+            this.lbgps_lat_title.Text = "위도 : ";
+            // 
+            // grp_ImageViewer
+            // 
+            this.grp_ImageViewer.Controls.Add(this.imageViewer);
+            this.grp_ImageViewer.Location = new System.Drawing.Point(15, 12);
+            this.grp_ImageViewer.Name = "grp_ImageViewer";
+            this.grp_ImageViewer.Size = new System.Drawing.Size(267, 296);
+            this.grp_ImageViewer.TabIndex = 1;
+            this.grp_ImageViewer.TabStop = false;
+            this.grp_ImageViewer.Text = "이미지 뷰어";
             // 
             // tabSetting
             // 
@@ -263,15 +317,43 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // grp_ImageViewer
+            // grp_alert
             // 
-            this.grp_ImageViewer.Controls.Add(this.imageViewer);
-            this.grp_ImageViewer.Location = new System.Drawing.Point(15, 12);
-            this.grp_ImageViewer.Name = "grp_ImageViewer";
-            this.grp_ImageViewer.Size = new System.Drawing.Size(267, 296);
-            this.grp_ImageViewer.TabIndex = 1;
-            this.grp_ImageViewer.TabStop = false;
-            this.grp_ImageViewer.Text = "이미지 뷰어";
+            this.grp_alert.Controls.Add(this.lb_alert);
+            this.grp_alert.Controls.Add(this.ImageAlertViewer);
+            this.grp_alert.Location = new System.Drawing.Point(192, 81);
+            this.grp_alert.Name = "grp_alert";
+            this.grp_alert.Size = new System.Drawing.Size(363, 148);
+            this.grp_alert.TabIndex = 4;
+            this.grp_alert.TabStop = false;
+            this.grp_alert.Text = "알림";
+            // 
+            // lb_alert
+            // 
+            this.lb_alert.AutoSize = true;
+            this.lb_alert.Location = new System.Drawing.Point(132, 70);
+            this.lb_alert.Name = "lb_alert";
+            this.lb_alert.Size = new System.Drawing.Size(140, 15);
+            this.lb_alert.TabIndex = 4;
+            this.lb_alert.Text = "잠시만 기다려주십시오...";
+            // 
+            // imageViewer
+            // 
+            this.imageViewer.Location = new System.Drawing.Point(15, 22);
+            this.imageViewer.Name = "imageViewer";
+            this.imageViewer.Size = new System.Drawing.Size(235, 257);
+            this.imageViewer.TabIndex = 0;
+            this.imageViewer.TabStop = false;
+            // 
+            // ImageAlertViewer
+            // 
+            this.ImageAlertViewer.Image = global::Tourist.Properties.Resources.ring;
+            this.ImageAlertViewer.Location = new System.Drawing.Point(56, 41);
+            this.ImageAlertViewer.Name = "ImageAlertViewer";
+            this.ImageAlertViewer.Size = new System.Drawing.Size(70, 70);
+            this.ImageAlertViewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ImageAlertViewer.TabIndex = 3;
+            this.ImageAlertViewer.TabStop = false;
             // 
             // Main
             // 
@@ -297,8 +379,13 @@
             this.TouristTabControl.ResumeLayout(false);
             this.tabMap.ResumeLayout(false);
             this.tabDetail.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imageViewer)).EndInit();
+            this.grp_gps.ResumeLayout(false);
+            this.grp_gps.PerformLayout();
             this.grp_ImageViewer.ResumeLayout(false);
+            this.grp_alert.ResumeLayout(false);
+            this.grp_alert.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageViewer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageAlertViewer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,6 +417,13 @@
         private System.Windows.Forms.ColumnHeader columnLastWriteTime;
         private System.Windows.Forms.ColumnHeader columnLastAccessTime;
         private System.Windows.Forms.GroupBox grp_ImageViewer;
+        private System.Windows.Forms.GroupBox grp_gps;
+        private System.Windows.Forms.Label lbgps_location_title;
+        private System.Windows.Forms.Label lbgps_long_title;
+        private System.Windows.Forms.Label lbgps_lat_title;
+        private System.Windows.Forms.PictureBox ImageAlertViewer;
+        private System.Windows.Forms.GroupBox grp_alert;
+        private System.Windows.Forms.Label lb_alert;
     }
 }
 

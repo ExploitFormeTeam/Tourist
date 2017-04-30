@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 
 namespace Tourist.Tourist
 {
@@ -29,6 +30,22 @@ namespace Tourist.Tourist
                 fs.Close();
             }
             return result;
+        }
+
+
+        public static string getGeoLocation(double longitute, double latitute)
+        {
+            Stream data;
+            string url = "http://maps.google.com/maps/api/geocode/json?latlng=" + latitute.ToString() + ","
+                + longitute.ToString() + "&sensor=false";
+
+            WebRequest wr = WebRequest.Create(url);
+            data = wr.GetResponse().GetResponseStream();
+
+            StreamReader sr = new StreamReader(data);
+            string testdata = sr.ReadToEnd();
+            sr.Close();
+            return testdata;
         }
         
         public static string GetFileSize(double byteCount)

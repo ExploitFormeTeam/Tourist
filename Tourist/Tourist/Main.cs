@@ -82,6 +82,24 @@ namespace Tourist
             imageViewer.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
+        private void HideDetailView()
+        {
+            grp_ImageViewer.Hide();
+            grp_gps.Hide();
+        }
+
+        private void ShowDetailView()
+        {
+            grp_ImageViewer.Show();
+            grp_gps.Show();
+        }
+
+        private void SetAlertView(Image img, string text)
+        {
+            ImageAlertViewer.Image = img;
+            lb_alert.Text = text;
+        }
+
         private void DeveloperToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://www.facebook.com/exploitforme");
@@ -108,9 +126,11 @@ namespace Tourist
             setFileDetailView(selectFilename);
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string test = Tourist.TouristBasicUtil.getGeoLocation(127, 37);
+            MessageBox.Show(test);
         }
 
         #region GMap 설정관련 메소드
@@ -143,5 +163,17 @@ namespace Tourist
             TouristGmap.Overlays.Add(markersOverlay);
         }
         #endregion
+
+        private void TouristTabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPage.Name == "tabDetail")
+            {
+                HideDetailView();
+                if (selectedPath == "")
+                    SetAlertView(Properties.Resources.information, "분석을 먼저 진행해주십시오.");
+                else
+                    SetAlertView(Properties.Resources.warning, "이미지를 아래에서 선택해주십시오.");
+            }
+        }
     }
 }

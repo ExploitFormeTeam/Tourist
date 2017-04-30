@@ -109,6 +109,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ring.gif" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\warning.png" />
     <Content Include="tourist_icon.ico" />
   </ItemGroup>
   <ItemGroup>
